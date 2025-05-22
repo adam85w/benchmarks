@@ -1,0 +1,11 @@
+{
+    "namespace": "net.adam85w.benchmark.avro",
+    "type": "record",
+    "name": "User",
+    "fields": [
+        {"name": "id", "type": "long"},
+        {"name": "name", "type": "string"},
+        {"name": "age", "type": "int"},
+        {"name": "email", "type": "string"}
+    ]
+}
