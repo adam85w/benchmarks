@@ -1,27 +1,26 @@
-package net.adam85w.benchmark.json;
+package net.adam85w.benchmark.proto;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
-public class JsonDeserializerBenchmark {
+public class ProtobufDeserializerBenchmark {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(JsonDeserializerBenchmark.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProtobufDeserializerBenchmark.class);
 
 	static void test() throws IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
-
-		InputStream inputStream = new FileInputStream("user_json.bin");
-		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(inputStream.readNBytes(Integer.MAX_VALUE));
+		FileInputStream inputStream = new FileInputStream("user_protobuf.bin");
+		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(inputStream.readAllBytes());
 
 		int iterations = 10_000_000;
 		long totalDeserialization = 0;
 
 		for (int i = 0; i < iterations; i++) {
 			long startDeserialization = System.nanoTime();
-			objectMapper.readValue(byteArrayInputStream, User.class);
+			User.parseFrom(byteArrayInputStream);
 			long endDeserialization = System.nanoTime();
 			byteArrayInputStream.reset();
 

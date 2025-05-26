@@ -6,20 +6,15 @@ import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.specific.SpecificDatumWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-@SpringBootApplication
 public class AvroSerializerBenchmark {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AvroSerializerBenchmark.class);
 
-	public static void main(String[] args) throws IOException {
-		SpringApplication.run(AvroSerializerBenchmark.class, args);
-
+	static void test() throws IOException {
 		User user = new User(1L, "Adam", 40, "adam@example.com");
 
 		int iterations = 10_000_000;

@@ -5,18 +5,13 @@ import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.io.*;
 
-@SpringBootApplication
 public class AvroSerializer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AvroSerializer.class);
 
-	public static void main(String[] args) throws IOException {
-		SpringApplication.run(AvroSerializer.class, args);
+	static void test() throws IOException {
 		User userSerialized = new User(1L, "Adam", 40, "adam@example.com");
 
 		OutputStream outputStream = new FileOutputStream("user_avro.bin");

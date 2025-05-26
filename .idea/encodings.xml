@@ -3,5 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/avro/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/json/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/json/target/generated-sources/jsonschema2pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/protobuf/src/main/java" charset="UTF-8" />
   </component>
 </project>

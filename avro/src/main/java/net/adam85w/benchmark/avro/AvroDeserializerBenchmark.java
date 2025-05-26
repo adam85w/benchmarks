@@ -4,18 +4,14 @@ import org.apache.avro.io.*;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.*;
 
-@SpringBootApplication
 public class AvroDeserializerBenchmark {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AvroDeserializerBenchmark.class);
 
-	public static void main(String[] args) throws IOException {
-		SpringApplication.run(AvroDeserializerBenchmark.class, args);
+	static void test() throws IOException {
 
 		int iterations = 10_000_000;
 		long totalDeserialization = 0;
@@ -24,7 +20,6 @@ public class AvroDeserializerBenchmark {
 		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(inputStream.readNBytes(Integer.MAX_VALUE));
 		DatumReader<User> userDatumReader = new SpecificDatumReader<>(User.class);
 		BinaryDecoder decoder = DecoderFactory.get().binaryDecoder(byteArrayInputStream, null);
-
 
 		for (int i = 0; i < iterations; i++) {
 			long startDeserialization = System.nanoTime();

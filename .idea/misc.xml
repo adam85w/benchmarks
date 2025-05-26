@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/avro/pom.xml" />
         <option value="$PROJECT_DIR$/json/pom.xml" />
+        <option value="$PROJECT_DIR$/protobuf/pom.xml" />
       </list>
     </option>
   </component>
